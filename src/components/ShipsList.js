@@ -6,7 +6,7 @@ const ShipsList = ({data}) => {
         <div>
             {data.map(item => {
                 return (
-                    <div className='wrapper'>
+                    <div key={`${item.flight_number}`} className='wrapper'>
                         <div className='text__wrapper'>
                             <h1>{item.mission_name}</h1>
                             <span>{item.launch_year}</span>
