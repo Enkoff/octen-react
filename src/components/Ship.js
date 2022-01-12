@@ -1,5 +1,5 @@
 import React from 'react';
-import './shipsList.css'
+import './ship.css'
 
 const Ship = ({item: {mission_name, launch_year, links: {mission_patch}}}) => {
     return (
