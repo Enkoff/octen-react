@@ -1,22 +1,10 @@
 import React from 'react';
-import './shipsList.css'
+import Ship from "./Ship";
 
 const ShipsList = ({data}) => {
     return (
         <div>
-            {data.map(item => {
-                return (
-                    <div key={`${item.flight_number}`} className='wrapper'>
-                        <div className='text__wrapper'>
-                            <h1>{item.mission_name}</h1>
-                            <span>{item.launch_year}</span>
-                        </div>
-                        <div>
-                            <img src={`${item.links.mission_patch}`} width='100px' height='100px' alt={'ships=logo'}/>
-                        </div>
-                    </div>
-                );
-            })}
+            {data.map(item => <Ship item={item}/>)}
         </div>
     );
 };

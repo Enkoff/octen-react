@@ -11,3 +11,7 @@
     display: flex;
     flex-direction: column;
 }
+.ship__img {
+    width: 100px;
+    height: 100px;
+}
