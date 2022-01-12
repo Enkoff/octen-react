@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import ShipsList from "./components/ShipsList";
+import Ships from "./components/Ships";
 
 const App = () => {
     const [launchingShips, setLaunchingShips] = useState([]);
@@ -13,7 +13,7 @@ const App = () => {
 
     return (
         <div>
-            <ShipsList data={launchingShips}/>
+            <Ships data={launchingShips}/>
         </div>
     );
 };

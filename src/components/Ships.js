@@ -1,7 +1,7 @@
 import React from 'react';
 import Ship from "./Ship";
 
-const ShipsList = ({data}) => {
+const Ships = ({data}) => {
     return (
         <div>
             {data.map(item => <Ship item={item}/>)}
@@ -9,6 +9,6 @@ const ShipsList = ({data}) => {
     );
 };
 
-export default ShipsList;
+export default Ships;
 
 
