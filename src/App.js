@@ -1,33 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import Users from "./components/Users";
-import Posts from "./components/Posts";
-import Comments from "./components/Comments";
-import './App.css'
+import ShipsList from "./components/ShipsList";
 
 const App = () => {
-    const [users, setUsers] = useState([]);
-    const [posts, setPosts] = useState([]);
-    const [comments, setComments] = useState([]);
+    const [launchingShips, setLaunchingShips] = useState([]);
 
     useEffect(() => {
-        fetch('https://jsonplaceholder.typicode.com/users')
+        fetch('https://api.spacexdata.com/v3/launches/')
             .then(response => response.json())
-            .then(response => setUsers(response));
-        fetch('https://jsonplaceholder.typicode.com/posts')
-            .then(response => response.json())
-            .then(response => setPosts(response));
-        fetch('https://jsonplaceholder.typicode.com/comments')
-            .then(response => response.json())
-            .then(response => setComments(response));
+            .then(response => response.filter(item => item.launch_year !== '2020'))
+            .then(response => setLaunchingShips(response));
     }, [])
 
     return (
         <div>
-            <div className='header'>
-                <Users data={users}/>
-                <Posts data={posts}/>
-            </div>
-            <Comments data={comments}/>
+            <ShipsList data={launchingShips}/>
         </div>
     );
 };

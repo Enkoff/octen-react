@@ -1,0 +1,13 @@
+.wrapper {
+    display: flex;
+    border: 2px solid black;
+    justify-content: space-between;
+    padding: 0 400px;
+    width: 100%;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+.text__wrapper {
+    display: flex;
+    flex-direction: column;
+}
