@@ -1,15 +1,13 @@
 import React from 'react';
 
 import User from "./User";
-import './users.css'
 
-const Users = ({data, detailsHandler}) => {
+const Users = ({users}) => {
     return (
-        <div className='container border'>
-            {data.map(user => <User key={user.id} user={user} detailsHandler={detailsHandler}/>)}
-        </div>
+        users.map(user => <User key={user.id} user={user}/>)
     );
 };
+
 
 export default Users;
 

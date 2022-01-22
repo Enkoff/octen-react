@@ -5,12 +5,6 @@ const getAll = () => {
         .then(res => res.json());
 }
 
-const getUser = (id) => {
-    return fetch(`${urls.users}/${id}`)
-        .then(res => res.json());
-}
-
 export const userService = {
     getAll,
-    getUser
 }

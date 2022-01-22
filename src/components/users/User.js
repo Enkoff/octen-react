@@ -1,14 +1,15 @@
 import React from 'react';
 
-import './user.css'
+import './user.css';
 
-const User = ({user: {id, name},detailsHandler}) => {
+const User = ({user: {id, name, username, email}}) => {
     return (
-        <div className='wrapper'>
-            <div>{name}</div>
-            <button onClick={() => detailsHandler(id)}>GetDetails</button>
+        <div className={'user__rapper'}>
+            {`${id}. ${name}---${username}---${email}`}
         </div>
-    )
+    );
 };
 
 export default User;
+
+
