@@ -1,0 +1,8 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    margin: 5px;
+}
+.name {
+    margin-right: 5px;
+}
