@@ -1,49 +1,44 @@
-import React, {useEffect, useState} from 'react';
+import React, {useReducer} from 'react';
+import Counter from "./components/Counter";
 
-import './App.css';
-import Inputs from "./components/Inputs/Inputs";
-import Users from "./components/Users/Users";
-import {userService} from "./services/user.service";
+const initialState = {
+    counter1: 0,
+    counter2: 0,
+    counter3: 0
+}
+
+const reducer = (state, action) => {
+    const counterName = action.counterName;
+
+    switch (action.type) {
+        case 'inc':
+            return {
+                ...state,
+                [counterName]: state[counterName] + 1
+            }
+        case 'dec':
+            return {
+                ...state,
+                [counterName]: state[counterName] - 1
+            }
+        case 'res':
+            return {
+                ...state,
+                [counterName]: initialState[counterName]
+            }
+        default:
+            return initialState;
+    }
+}
 
 const App = () => {
-    const [users, setUsers] = useState([]);
-    const [filterUsers, setFilterUsers] = useState([]);
-
-    const filterUsersHandler = (inputs) => {
-        let copyUsers = JSON.stringify(users);
-        copyUsers = JSON.parse(copyUsers);
-
-        let filterUsers = [];
-
-       if (inputs.name) {
-           filterUsers = copyUsers.filter(user => user.name.toLowerCase().includes(inputs.name.toLowerCase()));
-       }
-       if (inputs.username) {
-           filterUsers = copyUsers.filter(user => user.username.toLowerCase().includes(inputs.username.toLowerCase()));
-       }
-       if (inputs.email) {
-           filterUsers = copyUsers.filter(user => user.email.toLowerCase().includes(inputs.email.toLowerCase()));
-       }
-
-       if (!inputs.name && !inputs.username && !inputs.email) {
-           setFilterUsers(copyUsers);
-           return;
-       }
-       setFilterUsers(filterUsers);
-    }
-
-    useEffect(() => {
-        userService.getAll()
-            .then(res => {
-                setUsers(res);
-                setFilterUsers(res);
-            });
-    },[]);
+    const [state, dispatch] = useReducer(reducer, initialState);
 
     return (
-        <div className={'root__container'}>
-            <Inputs filterUsersHandler={filterUsersHandler}/>
-            <Users users={filterUsers}/>
+        <div>
+            <Counter counter={state.counter1} counterName={'counter1'} dispatch={dispatch}/>
+            <Counter counter={state.counter2} counterName={'counter2'} dispatch={dispatch}/>
+            <Counter counter={state.counter3} counterName={'counter3'} dispatch={dispatch}/>
         </div>
     );
 };
