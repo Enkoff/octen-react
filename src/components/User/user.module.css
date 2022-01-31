@@ -1,0 +1,18 @@
+.userContainer {
+    display: flex;
+    padding: 10px 0 10px 10px;
+    border: 1px solid darkgrey;
+    margin: 5px;
+    width: 50%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userLink {
+    padding: 5px;
+    margin: 0 5px;
+    text-decoration: none;
+    color: white;
+    background-color: lightseagreen;
+    border-radius: 5px;
+}

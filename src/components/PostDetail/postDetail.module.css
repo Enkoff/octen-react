@@ -1,0 +1,14 @@
+.postDetailLinkContainer {
+    margin: 10px 0 5px 0;
+    display: flex;
+    background-color: lightseagreen;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+.postDetailLink {
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}

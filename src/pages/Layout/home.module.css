@@ -1,0 +1,22 @@
+.outletContainer {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: lightseagreen;
+}
+
+.header a[class="active"] {
+    color: black;
+}
+
+.link {
+    font-size: 30px;
+    margin: 10px;
+    text-decoration: none;
+    color: white;
+}

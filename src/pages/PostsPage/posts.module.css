@@ -1,0 +1,16 @@
+.rootPostsContainer {
+    width: 100%;
+    display: flex;
+}
+.postsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+.postsOutletContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}

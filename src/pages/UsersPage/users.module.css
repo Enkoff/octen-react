@@ -1,0 +1,16 @@
+.rootUsersContainer {
+    width: 100%;
+    display: flex;
+}
+.usersContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+.usersOutletContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}

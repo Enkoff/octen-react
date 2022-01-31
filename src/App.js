@@ -1,50 +1,37 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
+import {Routes, Route} from "react-router-dom";
 
-import './App.css';
-import Inputs from "./components/Inputs/Inputs";
-import Users from "./components/Users/Users";
-import {userService} from "./services/user.service";
+import Layout from "./pages/Layout/Layout";
+import UsersPage from "./pages/UsersPage/UsersPage";
+import PostsPage from "./pages/PostsPage/PostsPage";
+import PostDetail from "./components/PostDetail/PostDetail";
+import HomePage from "./pages/HomePage/HomePage";
+import Comments from "./components/Comments/Comments";
+import UserDetail from "./components/UserDetail/UserDetail";
+import UserPosts from "./components/UserPosts/UserPosts";
+import UserAlbums from "./components/UserAlbums/UserAlbums";
+import Photos from "./components/Photos/Photos";
 
 const App = () => {
-    const [users, setUsers] = useState([]);
-    const [filterUsers, setFilterUsers] = useState([]);
-
-    const filterUsersHandler = (inputs) => {
-        let copyUsers = JSON.stringify(users);
-        copyUsers = JSON.parse(copyUsers);
-
-        let filterUsers = [];
-
-       if (inputs.name) {
-           filterUsers = copyUsers.filter(user => user.name.toLowerCase().includes(inputs.name.toLowerCase()));
-       }
-       if (inputs.username) {
-           filterUsers = copyUsers.filter(user => user.username.toLowerCase().includes(inputs.username.toLowerCase()));
-       }
-       if (inputs.email) {
-           filterUsers = copyUsers.filter(user => user.email.toLowerCase().includes(inputs.email.toLowerCase()));
-       }
-
-       if (!inputs.name && !inputs.username && !inputs.email) {
-           setFilterUsers(copyUsers);
-           return;
-       }
-       setFilterUsers(filterUsers);
-    }
-
-    useEffect(() => {
-        userService.getAll()
-            .then(res => {
-                setUsers(res);
-                setFilterUsers(res);
-            });
-    },[]);
-
     return (
-        <div className={'root__container'}>
-            <Inputs filterUsersHandler={filterUsersHandler}/>
-            <Users users={filterUsers}/>
-        </div>
+        <Routes>
+            <Route path={'/'} element={<Layout/>}>
+                <Route index element={<HomePage/>}/>
+                <Route path={'users'} element={<UsersPage/>}>
+                    <Route path={':id'} element={<UserDetail/>}>
+                        <Route path={'posts'} element={<UserPosts/>}/>
+                    </Route>
+                    <Route path={'albums/:id'} element={<UserAlbums/>}>
+                        <Route path={'photos'} element={<Photos/>}/>
+                    </Route>
+                </Route>
+                <Route path={'posts'} element={<PostsPage/>}>
+                    <Route path={':id'} element={<PostDetail/>}>
+                        <Route path={'comments'} element={<Comments/>}/>
+                    </Route>
+                </Route>
+            </Route>
+        </Routes>
     );
 };
 
