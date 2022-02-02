@@ -8,7 +8,7 @@ import {createCarThunk, updateCarThunk} from '../../store';
 import {CarValidator} from '../../validators';
 
 const Form = () => {
-    const {carForUpdate} = useSelector(state => state['carReducer']);
+    const {carForUpdate} = useSelector(state => state['car']);
     const {
         handleSubmit,
         register,

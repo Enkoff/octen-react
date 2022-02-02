@@ -1,22 +1,21 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {Car} from '../Car/Car';
 import {getAllCarsThunk} from '../../store';
+import styles from './cars.module.css';
+import {Car} from '../Car/Car';
 
 const Cars = () => {
-    const {cars, status, error} = useSelector(state => state['carReducer']);
+    const {cars} = useSelector(state => state.car);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getAllCarsThunk());
-    },[dispatch]);
+    }, [dispatch]);
 
     return (
-        <div>
-            {status === 'pending' && <div>Loading</div>}
-            {status === 'fulfilled' && cars.map(car => <Car key={car.id} car={car}/>)}
-            {status === 'rejected' && <div>{error}</div>}
+        <div className={styles.carsContainer}>
+            {cars.map(car => <Car key={car.id} car={car}/>)}
         </div>
     );
 };

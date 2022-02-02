@@ -3,9 +3,7 @@ import {carService} from '../../services';
 
 const initialState = {
     cars: [],
-    status: null,
-    error: null,
-    carForUpdate: null,
+    carForUpdate: {}
 };
 
 export const getAllCarsThunk = createAsyncThunk(
@@ -27,7 +25,7 @@ export const createCarThunk = createAsyncThunk(
             const newCar = await carService.create(car);
             dispatch(addCar({car: newCar}));
         } catch (e) {
-            return e.response.data;
+            console.log(e);
         }
     }
 );
@@ -77,7 +75,7 @@ const carSlice = createSlice({
             state.cars[index] = action.payload.car;
         },
     },
-    //ЕТАПИ ЗАПИТУ  ЦЕ ДЛЯ СЕБЕ ЗБЕРІГ =)
+    //ЕТАПИ ЗАПИТУ ЦЕ ДЛЯ СЕБЕ ЗБЕРІГ =)
     // extraReducers: {
     // [getAllCarsThunk.pending]: (state, action) => {
     //     state.status = 'pending';
@@ -102,4 +100,4 @@ export const {
     carToUpdate,
     updateCar,
 } = carSlice.actions;
-export default carReducer;
+export {carReducer};

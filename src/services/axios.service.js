@@ -1,5 +1,7 @@
-import axios from "axios";
-import {baseURL} from '../constants';
+import axios from 'axios';
+import {carsBaseURL, jsonPlaceholderBaseUrl} from '../constants';
 
-const axiosService = axios.create({baseURL});
-export {axiosService};
+const axiosCarService = axios.create({baseURL: carsBaseURL});
+const axiosJsonPlaceholderService = axios.create({baseURL: jsonPlaceholderBaseUrl});
+
+export {axiosCarService, axiosJsonPlaceholderService};
