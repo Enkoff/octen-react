@@ -1,0 +1,21 @@
+.inputsContainer {
+    display: flex;
+    justify-content: center;
+}
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+.errorText {
+    text-align: end;
+    margin: 5px 0;
+    color: brown;
+    font-size: 12px;
+}
+
+.btn {
+    margin-left: 10px;
+    width: 70px;
+    height: 9%;
+}
