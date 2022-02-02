@@ -1,9 +1,0 @@
-.carContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    gap: 20px;
-    border: 1px solid black;
-    padding: 15px;
-}

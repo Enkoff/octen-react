@@ -1,0 +1,11 @@
+.todoContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.todoCompleted {
+    text-decoration: line-through;
+}
