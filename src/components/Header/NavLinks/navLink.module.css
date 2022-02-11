@@ -1,0 +1,19 @@
+.navLinkWrapper {
+
+}
+
+.navLinkWrapper a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: white;
+    margin: 0 10px;
+}
+
+.navLinkWrapper a:hover {
+    color: red;
+    border-bottom: 2px solid red;
+}
+
+.navLinkWrapper a[class='active'] {
+    color: grey;
+}

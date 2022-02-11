@@ -1,7 +1,4 @@
 import axios from 'axios';
-import {carsBaseURL, jsonPlaceholderBaseUrl} from '../constants';
+import {configThemoviedb} from '../config';
 
-const axiosCarService = axios.create({baseURL: carsBaseURL});
-const axiosJsonPlaceholderService = axios.create({baseURL: jsonPlaceholderBaseUrl});
-
-export {axiosCarService, axiosJsonPlaceholderService};
+export const axiosService = axios.create({baseURL: configThemoviedb.baseURL});

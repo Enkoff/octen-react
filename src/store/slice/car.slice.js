@@ -1,5 +1,5 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
-import {carService} from '../../services';
+import {themoviedbService} from '../../services';
 
 const initialState = {
     cars: [],
@@ -10,7 +10,7 @@ export const getAllCarsThunk = createAsyncThunk(
     'carSlice/getAllCarsThunk',
     async (_, {dispatch}) => {
         try {
-            const cars = await carService.getAll();
+            const cars = await themoviedbService.getAll();
             dispatch(getAllCars({cars}));
         } catch (e) {
             console.log(e);
@@ -22,7 +22,7 @@ export const createCarThunk = createAsyncThunk(
     'carSlice/createCarThunk',
     async ({car}, {dispatch}) => {
         try {
-            const newCar = await carService.create(car);
+            const newCar = await themoviedbService.create(car);
             dispatch(addCar({car: newCar}));
         } catch (e) {
             console.log(e);
@@ -34,7 +34,7 @@ export const deleteCarThunk = createAsyncThunk(
     'carSlice/deleteCarThunk',
     async ({id}, {dispatch}) => {
         try {
-            await carService.deleteById(id);
+            await themoviedbService.deleteById(id);
             dispatch(deleteCar({id}));
         } catch (e) {
             console.log(e);
@@ -46,7 +46,7 @@ export const updateCarThunk = createAsyncThunk(
     'carSlice/updateCarThunk',
     async ({car}, {dispatch}) => {
         try {
-            await carService.updateById(car.id, car);
+            await themoviedbService.updateById(car.id, car);
             dispatch(updateCar({car}));
         } catch (e) {
             console.log(e);

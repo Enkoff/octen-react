@@ -1,7 +1,2 @@
-export * from './Car/Car';
-export * from './Cars/Cars';
-export * from './Form/Form';
-export * from './Header/Header';
-export * from './User/User';
-export * from './Post/Post';
-export * from './Comment/Comment';
+export {default as Header} from './Header/Header';
+export {default as Footer} from './Footer/Footer';

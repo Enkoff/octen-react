@@ -1,5 +1,4 @@
-export * from './Layout/Layout';
-export * from './UsersPage/UsersPage';
-export * from './PostsPage/PostsPage';
-export * from './CarsPage/CarsPage';
-export * from './CommentsPage/CommentsPage';
+export {default as Layout} from './Layout/Layout';
+export {default as Home} from './Home/Home';
+export {default as Catalog} from './Catalog/Catalog';
+export {default as Detail} from './Detail/Detail';
