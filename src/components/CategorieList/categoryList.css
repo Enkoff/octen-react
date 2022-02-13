@@ -1,0 +1,19 @@
+.categoryWrapper {
+    padding: 0 50px;
+}
+.categoryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+}
+
+.categoryWrapper .title {
+    color: white;
+}
+.categoryHeaderBtn {
+    margin-top: 0;
+}
+.categoryWrapper .swiper-slide {
+    width: 11% !important;
+}

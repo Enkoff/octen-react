@@ -1,16 +1,16 @@
 import React from 'react';
-import {Outlet} from "react-router-dom";
+import {Outlet} from 'react-router-dom';
 
 import {Footer, Header} from '../../components';
 
 const Layout = () => {
     return (
         <div>
-            <Header />
+            <Header/>
             <div>
-                <Outlet />
+                <Outlet/>
             </div>
-            <Footer />
+            <Footer/>
         </div>
     );
 };

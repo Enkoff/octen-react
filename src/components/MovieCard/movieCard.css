@@ -1,0 +1,20 @@
+.movieCardWrapper {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.7s ease;
+}
+
+.movieCard {
+    position: relative;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-top: 160%;
+    border-radius: 30px;
+    margin-bottom: 1rem;
+}
+
+.movieCardTitle {
+    color: white;
+    text-align: center;
+}

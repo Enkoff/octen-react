@@ -1,0 +1,46 @@
+.footerWrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding: 6rem 2rem;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.footerContent {
+    max-width: 1000px;
+    width: 100%;
+    flex-direction: column;
+}
+
+.logoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.footerContentMenus {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerContentMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.footerContentMenu a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+}
+
+.footerContentMenu a:hover {
+    color: red;
+}

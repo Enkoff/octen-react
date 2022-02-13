@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink, useLocation} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 import styles from './navLink.module.css';
 
@@ -23,9 +23,7 @@ const NavLinks = () => {
         <div className={styles.navLinkWrapper}>
             {
                 headerNav.map((link, i) => (
-                    <NavLink
-                        key={i}
-                        to={link.path}>
+                    <NavLink key={i} to={link.path} >
                         {link.display}
                     </NavLink>
                 ))

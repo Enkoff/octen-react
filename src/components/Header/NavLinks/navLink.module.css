@@ -15,5 +15,6 @@
 }
 
 .navLinkWrapper a[class='active'] {
-    color: grey;
+    color: red;
+    border-bottom: 2px solid red;
 }
