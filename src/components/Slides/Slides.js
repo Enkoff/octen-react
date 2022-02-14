@@ -1,43 +1,47 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import SwiperCore, {Autoplay} from 'swiper';
 import {Swiper, SwiperSlide} from 'swiper/react';
-import 'swiper/css';
 
-import {themoviedbService} from '../../services';
-import {Slide, TrailerModal} from '../index';
+import 'swiper/css';
+import './slides.css';
+
+import {Slide} from '../index';
 import {category, movieType} from '../../config';
+import {getMovieThunk} from '../../store';
+
+//ДОДАТИ ТРЕЙЛЕР
 
 const Slides = () => {
-    const [movies, setMovies] = useState([]);
+    const dispatch = useDispatch();
+    const {homeUpcoming} = useSelector(state => state['themoviedb']);
 
     SwiperCore.use([Autoplay]);
 
     useEffect(() => {
-        themoviedbService
-            .getMoviesList(category.movie, movieType.upcoming)
-            .then(res => setMovies(res.results));
-    }, []);
-
+        dispatch(getMovieThunk({category: category.movie, type: movieType.upcoming}));
+    }, [dispatch]);
 
     return (
-        <Swiper
-            spaceBetween={10}
-            slidesPerView={1}
-            // autoplay={{delay: 3000}}
-        >
-            {
-                movies.map((movie, i) => (
-                    <SwiperSlide key={i}>
-                        {({isActive}) => (
-                            <Slide movie={movie} className={isActive ? 'active' : ''}/>
-                        )}
-                    </SwiperSlide>
-                ))
-            }
-            {/*{*/}
-            {/*    movies.map((movie, i) => <TrailerModal key={i} movie={movie} isActive={}/>)*/}
-            {/*}*/}
-        </Swiper>
+        <div className={'upcomingWrapper'}>
+            <Swiper
+                spaceBetween={10}
+                slidesPerView={1}
+                autoplay={{delay: 3000}}
+                speed={1000}
+            >
+                {
+                    homeUpcoming.map((movie, i) => (
+                        <SwiperSlide key={i}>
+                            {({isActive}) => (
+                                <Slide movie={movie} className={isActive ? 'active' : ''}/>
+                            )}
+                        </SwiperSlide>
+                    ))
+                }
+            </Swiper>
+        </div>
+
     );
 };
 

@@ -1,67 +1,51 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation, useParams} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {useLocation} from 'react-router-dom';
 
 import './movieGrid.css';
-import styles from '../Button/button.module.css';
-import {Button, MovieCard} from '../index';
-import {themoviedbService} from '../../services';
-import {movieType, tvType} from '../../config';
+import '../Button/button.css';
 
+import {Button, MovieCard} from '../index';
+import {movieType, tvType} from '../../config';
+import {getMovieThunk} from '../../store';
 
 const MovieGrid = () => {
-    const catalog = useParams();
+    const {pathname} = useLocation();
+    const dispatch = useDispatch();
+    const {movie, tv} = useSelector(state => state['themoviedb']);
 
-    console.log(catalog);
-    const [movies, setMovies] = useState([]);
-    const [page, setPage] = useState(1);
-
-    useEffect(() => {
-        console.log('popal');
-    }, []);
+    const [page, setPage] = useState(null);
 
     useEffect(() => {
-        if (page === 1) {
-            if (catalog === '/tv') {
-                themoviedbService
-                    .getMoviesList(catalog, tvType.popular, page)
-                    .then(res => setMovies(res.results));
-            } else {
-                themoviedbService
-                    .getMoviesList(catalog, movieType.popular, page)
-                    .then(res => setMovies(res.results));
-            }
+        if (pathname === '/tv') {
+            setPage(1);
+            dispatch(getMovieThunk({category: pathname, type: tvType.popular, mode: 'get'}));
+        } else {
+            setPage(1);
+            dispatch(getMovieThunk({category: pathname, type: movieType.popular, mode: 'get'}));
         }
-    }, [catalog, page]);
-
+    }, [dispatch, pathname]);
 
     const loadMore = () => {
-        setPage(prev => prev + 1);
-        if (catalog === '/tv') {
-            themoviedbService
-                .getMoviesList(catalog, tvType.popular, page + 1)
-                .then(res => setMovies(prev => [...prev, ...res.results]));
+        if (pathname === '/tv') {
+            dispatch(getMovieThunk({category: pathname, type: tvType.popular, page: page + 1, mode: 'add'}));
         } else {
-            themoviedbService
-                .getMoviesList(catalog, movieType.popular, page + 1)
-                .then(res => setMovies(prev => [...prev, ...res.results]));
+            dispatch(getMovieThunk({category: pathname, type: movieType.popular, page: page + 1, mode: 'add'}));
         }
+        setPage(prev => prev + 1);
     };
 
     return (
         <>
             <div className={'movieGrid'}>
                 {
-                    movies.map((item, index) => <MovieCard key={index} item={item}/>)
+                    pathname === '/tv'
+                        ? tv.map((item, index) => <MovieCard key={index} item={item} category={pathname}/>)
+                        : movie.map((item, index) => <MovieCard key={index} item={item} category={pathname} />)
                 }
             </div>
             <div className={'loadMoreWrapper'}>
-                <Button
-                    onClick={loadMore}
-                    className={styles.buttonOutline}
-
-                >
-                    Load more
-                </Button>
+                <Button onClick={loadMore} className={'buttonOutline'}>Load more</Button>
             </div>
         </>
     );

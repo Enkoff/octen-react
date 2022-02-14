@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {useLocation} from 'react-router-dom';
 
 import {
@@ -9,12 +9,16 @@ import {
 const Catalog = () => {
     const {pathname} = useLocation();
 
+    useEffect(() => {
+        window.scrollTo(0,0);
+    },[pathname]);
+
     return (
         <div>
             <CatalogHeader>
                 {pathname === '/tv' ? 'TV Series' : 'Movies'}
             </CatalogHeader>
-            <MovieGrid />
+            <MovieGrid/>
         </div>
     );
 };

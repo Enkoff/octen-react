@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 
-import styles from './navLink.module.css';
+import './navLink.css';
 
 const headerNav = [
     {
@@ -20,10 +20,10 @@ const headerNav = [
 
 const NavLinks = () => {
     return (
-        <div className={styles.navLinkWrapper}>
+        <div className={'navLinkWrapper'}>
             {
                 headerNav.map((link, i) => (
-                    <NavLink key={i} to={link.path} >
+                    <NavLink key={i} to={link.path}>
                         {link.display}
                     </NavLink>
                 ))

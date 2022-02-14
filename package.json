@@ -14,9 +14,9 @@
     "react-modal": "^3.14.4",
     "react-redux": "^7.2.6",
     "react-responsive-carousel": "^3.2.22",
+    "react-router": "^6.2.1",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
-    "react-youtube": "^7.14.0",
     "swiper": "^8.0.5",
     "web-vitals": "^2.1.3"
   },

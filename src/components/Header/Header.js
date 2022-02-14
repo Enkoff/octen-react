@@ -1,13 +1,30 @@
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 
-import styles from './header.module.css';
+import './header.css';
 import {Logo, NavLinks} from './index';
 
 const Header = () => {
+
+    const headerRef = useRef(null);
+
+    useEffect(() => {
+        const shrinkHeader = () => {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                headerRef.current.classList.add('shrink');
+            } else {
+                headerRef.current.classList.remove('shrink');
+            }
+        };
+        window.addEventListener('scroll', shrinkHeader);
+        return () => {
+            window.removeEventListener('scroll', shrinkHeader);
+        };
+    }, []);
+
     return (
-        <div className={styles.header}>
+        <div ref={headerRef} className={'header'}>
             <Logo/>
-            <NavLinks />
+            <NavLinks/>
         </div>
     );
 };

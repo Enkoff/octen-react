@@ -7,7 +7,6 @@ import {
 import {category, movieType, tvType} from '../../config';
 
 const Home = () => {
-
     return (
         <div>
             <Slides/>

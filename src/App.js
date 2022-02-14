@@ -7,6 +7,7 @@ import {
     Catalog,
     Home,
     Layout,
+    Detail
 } from './pages';
 
 const App = () => {
@@ -14,8 +15,9 @@ const App = () => {
         <Routes>
             <Route path={'/'} element={<Layout/>}>
                 <Route index element={<Home/>}/>
-                <Route path={'/movie'} element={<Catalog />}/>
-                <Route path={'/tv'} element={<Catalog />}/>
+                <Route path={'movie'} element={<Catalog/>}/>
+                <Route path={'tv'} element={<Catalog/>}/>
+                <Route path={'detail/:category/:id'} element={<Detail/>}/>
             </Route>
         </Routes>
     );

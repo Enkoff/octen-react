@@ -1,9 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
-import {carReducer} from './';
+
+import {themoviedbReducer} from './index';
 
 const store = configureStore({
     reducer: {
-        car: carReducer,
+        themoviedb: themoviedbReducer
     }
 });
 

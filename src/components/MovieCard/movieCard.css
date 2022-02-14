@@ -2,6 +2,13 @@
     display: flex;
     flex-direction: column;
     transition: transform 0.7s ease;
+    color: white;
+}
+
+.movieCardWrapper:hover {
+    transform: scale(0.9);
+    cursor: pointer;
+    color: red;
 }
 
 .movieCard {
@@ -15,6 +22,5 @@
 }
 
 .movieCardTitle {
-    color: white;
     text-align: center;
 }
